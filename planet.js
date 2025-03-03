@@ -71,6 +71,7 @@ addEventListener('DOMContentLoaded', () => {
   
   const renderPlanet = planet => {
     document.title = `SWAPI - ${planet?.name}`;  // Just to make the browser tab say their name
+    // idH1.textContent = planet?.name;
     planetH1.textContent = planet?.name;
     climateSpan.textContent = planet?.climate;
     surface_waterSpan.textContent = planet?.surface_water;
@@ -78,7 +79,7 @@ addEventListener('DOMContentLoaded', () => {
     diameterSpan.textContent = planet?.diameter;
     rotation_periodSpan.textContent = planet?.rotation_period;
     terrainSpan.textContent = planet?.terrain;
-    gravitySpan.textContent = planet?.gravit;
+    gravitySpan.textContent = planet?.gravity;
     orbital_periodSpan.textContent = planet?.orbital_period;
     populationSpan.textContent = planet?.population;
     homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
