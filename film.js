@@ -65,7 +65,7 @@ const renderfilm = film => {
   document.title = `SWAPI - ${film?.title}`;  // Just to make the browser tab say their name
   filmH1.textContent = film?.title;
   producerSpan.textContent = film?.producer;
-  titleSpan.textContent = film?.title;
+//   titleSpan.textContent = film?.title;
   directorSpan.textContent = film?.director;
   releaseDateSpan.textContent = film?.release_date;
   episodeIdSpan.textContent = film?.episode_id;
