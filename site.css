@@ -70,7 +70,8 @@ label {
 }
 
 /* Character page */
-h1#name {
+h1#name,
+h1#film {
   margin: 50px;
 }
 
