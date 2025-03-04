@@ -8,17 +8,20 @@
   <title>Star Wars Characters</title>
   <link rel="stylesheet" href="site.css">
   <script src="index.js" defer></script>
+  <link rel="icon" href="Star-Wars-Logo-1977-present.jpg">
 </head>
 <body>
-  <main>
+  <main class="container-fluid">
   <div>
     <h1>Star Wars Universe Lookup</h1>
     <label for="searchString">Who you looking for? <span class="small">(Regular expressions are cool
         here)</span></label>
     <input id="searchString" oninput="filterCharacters()" autocomplete="off" />
   </div>
+  <div>
   <section id="charactersList">
   </section>
+</div>
 </main>
 </body>
 

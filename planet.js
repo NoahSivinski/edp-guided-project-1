@@ -69,7 +69,7 @@ addEventListener('DOMContentLoaded', () => {
   }
   
   const renderCharacter = character => {
-    document.title = `SWAPI - ${character?.name}`;  // Just to make the browser tab say their name
+    document.title = `${character?.name}`;  // Just to make the browser tab say their name
     nameH1.textContent = character?.name;
     heightSpan.textContent = character?.height;
     massSpan.textContent = character?.mass;
