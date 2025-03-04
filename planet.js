@@ -29,7 +29,7 @@ addEventListener('DOMContentLoaded', () => {
     orbital_periodSpan = document.querySelector('span#orbital_period');
     populationSpan = document.querySelector('span#population');
     charactersUl = document.querySelector('#characters>ul');
-    planetsUl = document.querySelector('#planets>ul');
+    filmsUl = document.querySelector('#films>ul');
     const sp = new URLSearchParams(window.location.search)
     const id = sp.get('id')
     getPlanet(id)
@@ -39,8 +39,8 @@ addEventListener('DOMContentLoaded', () => {
     let planet;
     try {
       planet = await fetchPlanet(id)
-      planet.characters = await fetchCharacters(film)
-      planet.films = await fetchFilms(film)
+      planet.characters = await fetchCharacters(planet)
+      planet.films = await fetchFilms(planet)
     }
     catch (ex) {
       console.error(`Error reading film ${id} data.`, ex.message);
@@ -56,14 +56,14 @@ addEventListener('DOMContentLoaded', () => {
   }
   
   async function fetchCharacters(planet) {
-    const url = `${baseUrl}/planets/${planet?.characters}`;
+    const url = `${baseUrl}/planets/${planet?.id}/characters`;
     const characters = await fetch(url)
       .then(res => res.json())
     return characters;
   }
   
   async function fetchFilms(planet) {
-    const url = `${baseUrl}/planet/${character?.id}/films`;
+    const url = `${baseUrl}/planets/${planet?.id}/films`;
     const films = await fetch(url)
       .then(res => res.json())
     return films;
@@ -82,8 +82,10 @@ addEventListener('DOMContentLoaded', () => {
     gravitySpan.textContent = planet?.gravity;
     orbital_periodSpan.textContent = planet?.orbital_period;
     populationSpan.textContent = planet?.population;
-    homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
-    const filmsLis = character?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
-    filmsUl.innerHTML = filmsLis.join("");
+    // homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
+    const charactersList = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`);
+    charactersUl.innerHTML = charactersList.join("");
+    const filmsList = planet?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`);
+    filmsUl.innerHTML = filmsList.join("");
   }
   
